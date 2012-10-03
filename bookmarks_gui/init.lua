@@ -55,6 +55,24 @@ bookmarks_gui.set = function(name, pos)
 	io.close(output)
 end
 
+-- del
+bookmarks_gui.del = function(name, pos)
+	name = string.lower(string.gsub(name, "%W", "_"))
+	for i, v in ipairs(bookmarkspos) do
+		if v.name==name then
+			table.remove(bookmarkspos,i)
+		end
+	end
+	-- save the bookmarks data from the table to the file
+	local output = io.open(bookmarks_gui.filename..".bookmarks", "w")
+	for i, v in ipairs(bookmarkspos) do
+		if v ~= nil then
+			output:write(math.floor(v.x).." "..math.floor(v.y).." "..math.floor(v.z).." "..v.name.."\n")
+		end
+	end
+	io.close(output)
+end
+
 -- go 
 bookmarks_gui.go = function(name, player)
 	name = string.lower(string.gsub(name, "%W", "_"))
@@ -104,10 +122,12 @@ bookmarks_gui.formspec = function(player)
 			.."label[4,5.5; then click Go.]"
 	end
 	formspec = formspec
-		.."field[8.5,9.6;2,1;bookmarks_gui_go_name;;]"
-		.."button_exit[10,9.5;1,0.5;bookmarks_gui_go;Go]"
+		.."field[2.5,9.6;2,1;bookmarks_gui_go_name;;]"
+		.."button_exit[4,9.5;1,0.5;bookmarks_gui_go;Go]"
 	if minetest.check_player_privs(player:get_player_name(), {server=true}) then 
 		formspec = formspec
+			.."field[8.5,9.6;2,1;bookmarks_gui_del_name;;]"
+			.."button_exit[10,9.5;1,0.5;bookmarks_gui_del;Del]"
 			.."field[11.5,9.6;2,1;bookmarks_gui_set_name;;]"
 			.."button_exit[13,9.5;1,0.5;bookmarks_gui_set;Set]"
 	end
@@ -136,13 +156,18 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 			bookmarks_gui.set(fields.bookmarks_gui_set_name, player:getpos())
 		end
 	end
+	if fields.bookmarks_gui_del and fields.bookmarks_gui_del_name then
+		if minetest.check_player_privs(player:get_player_name(), {server=true}) then 
+			bookmarks_gui.del(fields.bookmarks_gui_del_name, player:getpos())
+		end
+	end
 	if fields.bookmarks_gui_go and fields.bookmarks_gui_go_name then
 		bookmarks_gui.go(fields.bookmarks_gui_go_name, player)
 	end
 	if fields.bookmarks_gui_jump then
 		bookmarks_gui.go(fields.bookmarks_gui_jump, player)
 	end
-	if fields.bookmarks_gui or fields.bookmarks_gui_set or fields.bookmarks_gui_go or fields.bookmarks_gui_jump then
+	if fields.bookmarks_gui or fields.bookmarks_gui_set or fields.bookmarks_gui_del or fields.bookmarks_gui_go or fields.bookmarks_gui_jump then
 		inventory_plus.set_inventory_formspec(player, bookmarks_gui.formspec(player))
 	end
 end)
