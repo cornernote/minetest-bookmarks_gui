@@ -13,7 +13,7 @@ Players can set bookmark positions and then go to them using the inventory scree
 
 - **[Documentation](http://cornernote.github.io/minetest-bookmarks_gui)**
 - **[GitHub Project](https://github.com/cornernote/minetest-bookmarks_gui)**
-- **[Minetest Forum](http://minetest.net/forum/viewtopic.php?id=3219)**
+- **[Minetest Forum](https://forum.minetest.net/viewtopic.php?id=3219)**
 
 
 ## Support
