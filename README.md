@@ -1,6 +1,15 @@
 # Bookmarks GUI for Minetest
 
-Players can set bookmark positions and then go to them using the inventory screen.
+[![home](https://img.shields.io/badge/bookmarks_gui-home-blue.svg?style=flat-square)](http://cornernote.github.io/minetest-bookmarks_gui/)
+[![download](https://img.shields.io/github/tag/cornernote/minetest-bookmarks_gui.svg?style=flat-square&label=release)](https://github.com/cornernote/minetest-bookmarks_gui/archive/master.zip)
+[![git](https://img.shields.io/badge/git-project-green.svg?style=flat-square)](https://github.com/cornernote/minetest-bookmarks_gui)
+[![forum](https://img.shields.io/badge/minetest-mod-green.svg?style=flat-square)](http://forum.minetest.net/viewtopic.php?f=11&t=3219)
+[![bower](https://img.shields.io/badge/bower-mod-green.svg?style=flat-square)](https://minetest-bower.herokuapp.com/mods/bookmarks_gui)
+
+
+## Description
+
+Allows players to set bookmark positions and then go to them using the inventory screen.
 
 
 ## Features
@@ -9,11 +18,13 @@ Players can set bookmark positions and then go to them using the inventory scree
 - Server priv is required to set bookmarks.
 
 
-## Resources
+## Project Resources
 
-- **[Documentation](http://cornernote.github.io/minetest-bookmarks_gui)**
-- **[GitHub Project](https://github.com/cornernote/minetest-bookmarks_gui)**
-- **[Minetest Forum](https://forum.minetest.net/viewtopic.php?id=3219)**
+* [Home](http://cornernote.github.io/minetest-bookmarks_gui/)
+* [Download](https://github.com/cornernote/minetest-bookmarks_gui/archive/master.zip)
+* [Project](https://github.com/cornernote/minetest-bookmarks_gui)
+* [Forum](http://forum.minetest.net/viewtopic.php?f=11&t=3219)
+* [Bower](https://minetest-bower.herokuapp.com/mods/bookmarks_gui)
 
 
 ## Support
